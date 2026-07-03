@@ -1,92 +1,22 @@
-<!DOCTYPE html>
-<html lang="en" class="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SupportPilot – Standalone Preview Portal</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: '#3b82f6',
-            background: '#090d16',
-            card: '#0f172a',
-            border: '#1e293b'
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      background-color: #090d16;
-      color: #f8fafc;
-      font-family: system-ui, -apple-system, sans-serif;
-    }
-    .glass-card {
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.03);
-    }
-  </style>
-</head>
-<body class="min-h-screen flex flex-col justify-between p-6">
-  <!-- Glowing effects -->
-  <div class="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-blue-500/10 blur-[120px] pointer-events-none"></div>
 
-  <div class="max-w-4xl mx-auto w-full glass-card border border-border/60 rounded-3xl p-8 my-auto shadow-2xl relative z-10 text-center space-y-6">
-    <div class="inline-flex h-16 w-16 rounded-2xl bg-blue-500 items-center justify-center text-white shadow-lg mb-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-pulse"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-    </div>
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Build frontend interface</title>
+      <meta name="description" content="Streamline your frontend development with an intuitive interface that enhances design efficiency and accelerates project delivery for developers." />
+      <meta name="robots" content="noindex, nofollow" />
+      <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
+      
+    </head>
 
-    <h1 class="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">
-      SupportPilot AI Client Portal
-    </h1>
-
-    <p class="text-sm text-zinc-400 max-w-xl mx-auto leading-relaxed">
-      SupportPilot is a premium enterprise SaaS ticket resolution and RAG diagnostics system, complete with multi-agent diagnosis loops, Jira backlogs syncing, and email templates automation.
-    </p>
-
-    <!-- App features grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-left pt-4">
-      <div class="p-4 rounded-xl bg-slate-900/40 border border-white/5 space-y-1">
-        <span class="text-xs font-bold text-blue-400">🤖 AI Multi-Agent</span>
-        <p class="text-[10px] text-zinc-500">Sequenced logs and diagnostics workflows</p>
-      </div>
-      <div class="p-4 rounded-xl bg-slate-900/40 border border-white/5 space-y-1">
-        <span class="text-xs font-bold text-emerald-400">📚 Vector RAG</span>
-        <p class="text-[10px] text-zinc-500">Split search screens & match metrics</p>
-      </div>
-      <div class="p-4 rounded-xl bg-slate-900/40 border border-white/5 space-y-1">
-        <span class="text-xs font-bold text-amber-400">🔗 Jira Syncs</span>
-        <p class="text-[10px] text-zinc-500">Engineering backlog integrations</p>
-      </div>
-      <div class="p-4 rounded-xl bg-slate-900/40 border border-white/5 space-y-1">
-        <span class="text-xs font-bold text-purple-400">✉️ Email Drafts</span>
-        <p class="text-[10px] text-zinc-500">Status triggers and delivery charts</p>
-      </div>
-    </div>
-
-    <!-- Live execution instructions button -->
-    <div class="pt-6 border-t border-white/5 flex flex-col sm:flex-row gap-3 items-center justify-between">
-      <div class="text-left">
-        <span class="text-xs font-bold text-white block">Ready for Local Development?</span>
-        <span class="text-[10px] text-zinc-500">Follow the steps in README.md to spin up dev server</span>
-      </div>
-      <div class="flex gap-2">
-        <code class="bg-slate-950 px-3 py-1.5 rounded-lg border border-white/10 text-xs font-mono text-zinc-400 flex items-center">
-          npm run dev
-        </code>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer copyright -->
-  <footer class="text-center text-[10px] text-zinc-600 mt-6 relative z-10">
-    © 2026 SupportPilot, Inc. Built for supreme AI agentic support.
-  </footer>
-</body>
-</html>
+    <body>
+      
+      <div id="root"></div>
+      <script type="module" src="/src/main.tsx"></script>
+      
+    </body>
+  </html>
+  
