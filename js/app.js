@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
   initNotificationBadge();
 
   // 5. Initialize Sub-modules
-  window.TicketNovaTickets.init();
-  window.TicketNovaAssistant.init();
-  window.TicketNovaKB.init();
+  window.TripPlannerTickets.init();
+  window.TripPlannerAssistant.init();
+  window.TripPlannerKB.init();
   
-  window.TicketNovaAnalytics.init();
-  window.TicketNovaEmail.init();
-  window.TicketNovaSettings.init();
+  window.TripPlannerAnalytics.init();
+  window.TripPlannerEmail.init();
+  window.TripPlannerSettings.init();
 
   // 6. Update Dashboard Views with live data
   refreshDynamicViewElements();
@@ -107,20 +107,30 @@ function initNavigationRouter() {
         
         // Custom triggers depending on view target
         if (targetView === "assistant") {
-          window.TicketNovaAssistant.populateDropdown();
+          window.TripPlannerAssistant.populateDropdown();
         } else if (targetView === "email") {
-          window.TicketNovaEmail.refreshInbox();
+          window.TripPlannerEmail.refreshInbox();
         } else if (targetView === "analytics") {
-          window.TicketNovaAnalytics.refresh();
+          window.TripPlannerAnalytics.refresh();
         }
+
       }
     });
   });
+
+  const askAIBtn = document.getElementById("dash-action-assistant");
+  if (askAIBtn) {
+    askAIBtn.addEventListener("click", () => {
+      const targetNav = document.querySelector('[data-target="assistant"]');
+      if (targetNav) targetNav.click();
+    });
+  }
 }
+
 
 // --- Sidebar Collapse Action ---
 function initSidebarToggles() {
-  const toggleBtn = document.getElementById("sidebar-toggle");
+  const toggleBtn = document.getElementById("navbar-sidebar-toggle");
   
   toggleBtn.addEventListener("click", () => {
     document.body.classList.toggle("sidebar-collapsed");
@@ -194,11 +204,11 @@ function showToast(title, description, type = "info") {
 
 // --- Global Dynamic Views Refresh (KPI Syncs & Recent Activity table) ---
 function refreshDynamicViewElements() {
-  const tickets = window.TicketNovaTickets.getTickets();
+  const tickets = window.TripPlannerTickets.getTickets();
   
   // 1. Sync Analytics metrics counters
-  if (window.TicketNovaAnalytics && typeof window.TicketNovaAnalytics.refresh === "function") {
-    window.TicketNovaAnalytics.refresh();
+  if (window.TripPlannerAnalytics && typeof window.TripPlannerAnalytics.refresh === "function") {
+    window.TripPlannerAnalytics.refresh();
   }
 
   // 2. Render Dashboard recent activity list (show top 5 items)
@@ -225,7 +235,7 @@ function refreshDynamicViewElements() {
       if (targetNav) targetNav.click();
       
       setTimeout(() => {
-        window.TicketNovaTickets.openDrawer(t.id);
+        window.TripPlannerTickets.openDrawer(t.id);
       }, 300);
     });
 
@@ -266,10 +276,10 @@ function initAuthEngine() {
       const storedName = localStorage.getItem("nova-user-name") || "Pranjal Choudhary";
       
       
-      if (window.TicketNovaSettings) {
-        window.TicketNovaSettings.updateUIInitials(storedName);
-        window.TicketNovaSettings.applyAvatarColor(localStorage.getItem("nova-avatar-bg") || "#2563eb");
-        window.TicketNovaSettings.applyProfileImage(localStorage.getItem("nova-profile-img"));
+      if (window.TripPlannerSettings) {
+        window.TripPlannerSettings.updateUIInitials(storedName);
+        window.TripPlannerSettings.applyAvatarColor(localStorage.getItem("nova-avatar-bg") || "#2563eb");
+        window.TripPlannerSettings.applyProfileImage(localStorage.getItem("nova-profile-img"));
       }
 
       // Hide login overlay, show main platform

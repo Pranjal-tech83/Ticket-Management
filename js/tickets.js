@@ -487,11 +487,40 @@ function handleNewTicketSubmit(e) {
 
 // Export Table contents mock handler
 function handleExportCSV() {
-  showToast("CSV Export Started", "Formatting tickets dataset. Download will trigger shortly.", "info");
+  if (currentTickets.length === 0) {
+    showToast("Export Failed", "No tickets available to export.", "warning");
+    return;
+  }
   
-  setTimeout(() => {
-    showToast("CSV Downloaded", "Tickets directory list saved (5.8 KB).", "success");
-  }, 1200);
+  showToast("CSV Export Started", "Formatting tickets dataset...", "info");
+  
+  const headers = ["Ticket ID", "User", "Company", "Department", "Subject", "Category", "Priority", "Status", "Created Date"];
+  const rows = currentTickets.map(t => {
+    return [
+      t.id,
+      `"${t.user.name}"`,
+      `"${t.user.company}"`,
+      `"${t.department}"`,
+      `"${t.subject.replace(/"/g, '""')}"`,
+      `"${t.category}"`,
+      t.priority,
+      t.status,
+      t.createdDate
+    ].join(",");
+  });
+  
+  const csvContent = headers.join(",") + "\\n" + rows.join("\\n");
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("download", "supportpilot_tickets.csv");
+  link.style.display = "none";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  showToast("CSV Downloaded", "Tickets list saved successfully.", "success");
 }
 
 // Helper date utilities
