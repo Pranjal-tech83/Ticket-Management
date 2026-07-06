@@ -1,8 +1,8 @@
-# TicketNova 🚀 — AI Ticket Resolution Platform
+# SupportPilot 🚀 — AI Ticket Resolution Platform
 
 An enterprise-ready, high-fidelity Single Page Application (SPA) dashboard showcasing automated incident triage, AI-driven ticket resolution, telemetry analytics, interactive diagnostics, and customer outreach orchestration.
 
-TicketNova is built with premium UI designs, responsive custom styling, and live-updating interactive frontend components.
+SupportPilot is built with premium UI designs, responsive custom styling, and live-updating interactive frontend components.
 
 ---
 
@@ -38,7 +38,7 @@ Ticket-Management/
 ### 1. 📊 Platform Overview (Dashboard View)
 *   **KPI Telemetry Cards**: Displays real-time metrics for Total Tickets, Open Issues, Resolved Issues, and AI Resolution Rate with week-over-week trends.
 *   **Interactive Live SLA Chart**: Custom CSS bar chart visualising weekly AI Resolution SLA performance with responsive height fills.
-*   **Quick Action Shortcuts**: Quick paths to generate new tickets, execute assistant chat commands, and run workflows.
+*   **Quick Action Shortcuts**: Quick paths to generate new tickets and execute assistant chat commands.
 *   **Recent System Activity**: Real-time ticker displaying the 5 latest system actions, with rows linking directly to ticket workspace details.
 
 ### 2. 🎫 Incidents Workspace (Tickets View)
@@ -80,7 +80,7 @@ Ticket-Management/
 
 ## 🎨 Styling & Design Aesthetics
 
-TicketNova features premium web design standards:
+SupportPilot features premium web design standards:
 *   **Variable Theme Scoping**: CSS custom properties (`--accent-primary`, `--bg-surface`, etc.) to control light/dark palettes seamlessly.
 *   **Premium Typography**: Uses modern fonts, clean letter-spacing, and clear font weights.
 *   **Smooth Micro-Animations**: Interactivity supported by transition effects on buttons, sidebar collapsibility, active routes, drawer animations, and toast notification popups.
@@ -90,13 +90,14 @@ TicketNova features premium web design standards:
 
 ## 🚀 Getting Started
 
-Since TicketNova is fully implemented client-side with native HTML5, CSS3, and ES6+ modules, it requires **zero local backend setup or packages**:
+Since SupportPilot is fully implemented client-side with native HTML5, CSS3, and ES6+ modules, it requires **zero local backend setup or packages**:
 
 ### Local Execution
 1. Clone the repository to your local machine.
 2. Double-click the `index.html` file or run it via a local development server (e.g., Live Server extension in VS Code).
-3. Sign in using the default mock credentials pre-filled on the login screen.
+3. The application will immediately load into the main SupportPilot dashboard.
 
 ### Continuous Deployment
 This repository is configured with a GitHub Actions workflow (`static.yml`) under `.github/workflows/`.
 Every push to the default `master` branch will automatically build, upload, and deploy the latest build to **GitHub Pages**.
+
