@@ -142,6 +142,6 @@ function handleKBSearch(e) {
 }
 
 // Expose model globally
-window.TicketNovaKB = {
+window.SupportPilotKB = {
   init: initKnowledgeBaseModule
 };

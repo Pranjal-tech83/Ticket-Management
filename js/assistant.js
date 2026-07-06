@@ -123,6 +123,6 @@ function generateAIResponse(userMessage) {
 }
 
 // Global hook
-window.TicketNovaAssistant = {
+window.SupportPilotAssistant = {
   init: initAssistantModule
 };

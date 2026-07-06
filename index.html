@@ -4,53 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TripPlanner - AI Ticket Resolution Platform</title>
+  <title>SupportPilot - AI Ticket Resolution Platform</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<!-- Login Screen Overlay -->
-<div id="login-screen" class="active">
-  <div class="login-card">
-    <div class="login-logo">
-      <div class="logo-icon">N</div>
-      <span>TripPlanner</span>
-    </div>
-    <h2 style="font-weight: 800; font-size: 22px; letter-spacing: -0.5px;">Welcome back</h2>
-    <p class="login-subtitle">Sign in to your enterprise AI resolution platform.</p>
-
-    <form id="login-form">
-      <div class="form-group">
-        <label for="login-email">Work Email</label>
-        <input type="email" id="login-email" class="form-control" required placeholder="name@company.com"
-          value="pranjal.choudhary@tripplanner.ai">
-      </div>
-
-      <div class="form-group" style="margin-bottom: 20px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-          <label for="login-password">Password</label>
-          <a href="#" style="font-size: 11px; color: var(--accent-primary);"
-            onclick="showToast('Password Reset', 'Password recovery instructions sent to email.', 'info')">Forgot
-            password?</a>
-        </div>
-        <input type="password" id="login-password" class="form-control" required placeholder="••••••••"
-          value="password123">
-      </div>
-
-      <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-weight: 700;"
-        id="btn-login-submit">
-        <span>Sign In</span>
-      </button>
-    </form>
-  </div>
-</div>
-
-<div id="app-container" style="display: none;">
+<body>
+<div id="app-container" style="display: flex;">
 
   <!-- Left Sidebar Menu -->
   <aside class="sidebar">
     <div class="sidebar-header">
       <div class="logo-container">
         <div class="logo-icon">N</div>
-        <span class="logo-text">TripPlanner</span>
+        <span class="logo-text">SupportPilot</span>
       </div>
       
     </div>
@@ -126,7 +91,7 @@
         <span id="sidebar-avatar-txt">PC</span>
       </div>
       <div class="user-info" style="display: flex; flex-direction: column;">
-        <span class="user-name" id="sidebar-user-name">Pranjal Choudhary</span>
+        <span class="user-name" id="sidebar-user-name">Pranjal kumar</span>
         <span class="user-role">Administrator</span>
       </div>
       <button id="sidebar-logout-btn" class="nav-action-btn"
@@ -159,7 +124,7 @@
       <div class="navbar-actions">
         <div class="ai-status-badge">
           <span class="ai-indicator-dot"></span>
-          <span>Nova Engine Active</span>
+          <span>SupportPilot Engine Active</span>
         </div>
 
         <button class="nav-action-btn" id="theme-toggle" aria-label="Toggle Dark/Light Mode">
@@ -198,7 +163,7 @@
     <section class="view-section active-view" id="dashboard-view">
       <h1 style="margin-bottom: 8px; font-weight: 800; font-size: 24px; letter-spacing: -0.5px;">Platform Overview</h1>
       <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 14px;">Real-time diagnostics and
-        resolution telemetry for TripPlanner.</p>
+        resolution telemetry for SupportPilot.</p>
 
       <!-- KPI Metrics Grid -->
       <div class="kpi-container">
@@ -310,12 +275,7 @@
               </svg>
               <span>Create New Ticket</span>
             </button>
-            <button class="quick-action-btn" id="dash-action-run-wf">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 3l14 9-14 9V3z" fill="currentColor" />
-              </svg>
-              <span>Simulate Agent Workflow</span>
-            </button>
+            
             <button class="quick-action-btn" id="dash-action-assistant">
               <svg viewBox="0 0 24 24">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" />
@@ -602,7 +562,7 @@
         style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center;">
         <div>
           <h1 style="font-weight: 800; font-size: 24px; letter-spacing: -0.5px;">Integrations</h1>
-          <p style="color: var(--text-secondary); font-size: 14px; margin-top: 4px;">Connect TripPlanner with your
+          <p style="color: var(--text-secondary); font-size: 14px; margin-top: 4px;">Connect SupportPilot with your
             essential tools and workflows.</p>
         </div>
         <button class="btn btn-primary" id="btn-request-integration"
@@ -630,7 +590,7 @@
               </div>
               <p
                 style="color: var(--text-secondary); font-size: 13px; margin-top: 4px; line-height: 1.5; max-width: 650px;">
-                Two-way sync between TripPlanner tickets and Jira issues. Automatically create bugs from user reports and
+                Two-way sync between SupportPilot tickets and Jira issues. Automatically create bugs from user reports and
                 track engineering progress without leaving the dashboard.
               </p>
             </div>
@@ -735,7 +695,7 @@
             </div>
             <h4 style="font-weight: 700; font-size: 15px; margin-bottom: 6px;">Zendesk Migration</h4>
             <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Import historical tickets,
-              users, and macros from Zendesk to TripPlanner seamlessly.</p>
+              users, and macros from Zendesk to SupportPilot seamlessly.</p>
           </div>
           <button class="btn btn-secondary" style="width: 100%; font-size: 12px;"
             onclick="showToast('Zendesk Settings', 'Synchronizing historic database logs...', 'info')">Configure</button>
@@ -754,7 +714,7 @@
             </div>
             <h4 style="font-weight: 700; font-size: 15px; margin-bottom: 6px;">Email (SMTP/IMAP)</h4>
             <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">Connect custom email domains to
-              route support inquiries directly into your TripPlanner resolution queues.</p>
+              route support inquiries directly into your SupportPilot resolution queues.</p>
           </div>
           <button class="btn btn-secondary" style="width: 100%; font-size: 12px;"
             onclick="showToast('Email Settings', 'Opening mail server credentials dialog...', 'info')">Configure</button>
@@ -839,7 +799,7 @@
 
           <div class="form-group">
             <label for="settings-email">Email Address</label>
-            <input type="email" class="form-control" id="settings-email" value="pranjal.kumar@tripplanner.ai">
+            <input type="email" class="form-control" id="settings-email" value="pranjal.kumar@supportpilot.ai">
           </div>
 
           <div class="form-group">
@@ -855,7 +815,7 @@
           style="display: flex; flex-direction: column; gap: 16px; border-color: rgba(239, 68, 68, 0.2);">
           <div class="card-title" style="color: #ef4444;">Session Management</div>
           <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
-            Sign out of your active TripPlanner workspace session. You will need to enter your email and password to log
+            Sign out of your active SupportPilot workspace session. You will need to enter your email and password to log
             in again.
           </p>
           <button class="btn" id="btn-settings-logout"
@@ -1046,7 +1006,7 @@
         <div id="ai-loading-container"
           style="display: none; align-items: center; justify-content: center; gap: 12px; margin-top: 16px;">
           <div class="loader-spinner"></div>
-          <span style="font-size: 13px; font-weight: 600; color: var(--accent-primary);">Analyzing with TripPlanner
+          <span style="font-size: 13px; font-weight: 600; color: var(--accent-primary);">Analyzing with SupportPilot
             Core...</span>
         </div>
 

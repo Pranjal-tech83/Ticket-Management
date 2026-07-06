@@ -19,7 +19,7 @@ let aiPredictingState = false;
 // Initialize the Tickets manager
 function initTicketsModule() {
   // Load initial tickets from mock database
-  currentTickets = [...window.TicketNovaData.initialTickets];
+  currentTickets = [...window.SupportPilotData.initialTickets];
 
   // Setup DOM Event Listeners
   document.getElementById("tkt-search-bar").addEventListener("input", handleSearch);
@@ -444,7 +444,7 @@ function handleNewTicketSubmit(e) {
     const newId = `TKT-${1024 + currentTickets.length}`;
     const newTkt = {
       id: newId,
-      user: { name: "Pranjal Choudhary", email: "pranj@choudhary.com", company: "Local Workspace" },
+      user: { name: "Pranjal kumar", email: "pranj@choudhary.com", company: "Local Workspace" },
       department: predictedDept,
       subject: subject,
       category: category,
@@ -465,7 +465,7 @@ function handleNewTicketSubmit(e) {
       suggestedResolution: `Review the log trace patterns for context related to "${subject}". If issues persist, verify routing and whitelisting.`,
       escalationHistory: [],
       timeline: [
-        { time: new Date().toISOString(), title: "Ticket Opened", user: "Pranjal Choudhary", type: "system" },
+        { time: new Date().toISOString(), title: "Ticket Opened", user: "Pranjal kumar", type: "system" },
         { time: new Date().toISOString(), title: "Nova AI Classification Run", user: "Diagnosis Agent", type: "ai" }
       ],
       attachments: attachmentsList
@@ -535,7 +535,7 @@ function formatTime(isoString) {
 }
 
 // Expose functionality globally
-window.TicketNovaTickets = {
+window.SupportPilotTickets = {
   init: initTicketsModule,
   render: renderTicketsTable,
   getTickets: () => currentTickets,
