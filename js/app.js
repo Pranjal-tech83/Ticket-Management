@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // 5. Initialize Sub-modules
   window.SupportPilotTickets.init();
   window.SupportPilotAssistant.init();
-  window.SupportPilotKB.init();
-  
   window.SupportPilotAnalytics.init();
   window.SupportPilotEmail.init();
   window.SupportPilotSettings.init();

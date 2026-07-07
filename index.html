@@ -44,14 +44,7 @@
         </svg>
         <span class="nav-label">AI Assistant</span>
       </div>
-      <div class="nav-item" data-target="kb">
-        <svg viewBox="0 0 24 24">
-          <path
-            d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20M4 19.5V3.5A2.5 2.5 0 0 1 6.5 1M20 17V2H6.5"
-            stroke="currentColor" />
-        </svg>
-        <span class="nav-label">Knowledge Base</span>
-      </div>
+      
       
       <div class="nav-item" data-target="analytics">
         <svg viewBox="0 0 24 24">
@@ -118,7 +111,7 @@
           <circle cx="11" cy="11" r="8" />
           <path d="M21 21l-4.35-4.35" stroke="currentColor" />
         </svg>
-        <input type="text" class="search-input" id="global-search" placeholder="Search tickets, knowledge base...">
+        <input type="text" class="search-input" id="global-search" placeholder="Search tickets...">
       </div>
 
       <div class="navbar-actions">
@@ -396,60 +389,7 @@
         </div>
       </section>
       
-      <section class="view-section" id="kb-view">
-      <h1 style="margin-bottom: 8px; font-weight: 800; font-size: 24px; letter-spacing: -0.5px;">Knowledge Base</h1>
-      <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 14px;">Browse system documentation
-        templates and execute dynamic AI vector checks.</p>
 
-      <div class="kb-grid">
-        <!-- Categories & Navigation -->
-        <div class="kb-sidebar-nav">
-          <div class="card" style="padding: 16px;">
-            <input type="text" class="table-filter-select" id="kb-search-bar" placeholder="Search documentation..."
-              style="width: 100%; margin-bottom: 12px;">
-
-            <div class="kb-list" id="kb-category-list">
-              <div class="kb-item active" data-category="All">
-                <span>All Documents</span>
-              </div>
-              <div class="kb-item" data-category="Authentication">
-                <span>Authentication</span>
-              </div>
-              <div class="kb-item" data-category="Billing">
-                <span>Billing & Payments</span>
-              </div>
-              <div class="kb-item" data-category="Database">
-                <span>Database Operations</span>
-              </div>
-              <div class="kb-item" data-category="API">
-                <span>API Integration</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Documentation and Generated Articles -->
-        <div class="kb-content-area">
-          <div class="kb-solution-box" id="kb-ai-solution-panel" style="display: none;">
-            <div class="kb-solution-header">
-              <svg viewBox="0 0 24 24" width="20" height="20">
-                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83" stroke="currentColor" stroke-width="2" />
-              </svg>
-              <span>AI Generated Real-Time Solution</span>
-            </div>
-            <p id="kb-ai-content" style="font-size: 13px; line-height: 1.6; color: var(--text-secondary);"></p>
-          </div>
-
-          <div class="card" id="kb-docs-card">
-            <h2 id="kb-doc-title" style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">OAuth Endpoint
-              Signature Troubleshooting</h2>
-            <div id="kb-doc-body" style="font-size: 14px; line-height: 1.7; color: var(--text-secondary);">
-              Select an article or query search term.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- VIEW 6: ANALYTICS -->
     <section class="view-section" id="analytics-view">
@@ -1059,7 +999,6 @@
 <script src="js/data.js"></script>
 <script src="js/tickets.js"></script>
 <script src="js/assistant.js"></script>
-<script src="js/knowledge.js"></script>
 <script src="js/workflow.js"></script>
 <script src="js/analytics.js"></script>
 <script src="js/email.js"></script>
