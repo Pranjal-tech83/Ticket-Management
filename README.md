@@ -27,6 +27,7 @@ Ticket-Management/
 │   ├── email.js               # Integrated inbox simulator (Templated email replies, outbound triage)
 │   └── settings.js            # User profile editor, system configurations, and dark/light themes
 ├── index.html                 # Main application structure containing all SPA views
+├── Main.py                    # Main Python entry point
 └── README.md                  # Documentation (This file)
 ```
 
