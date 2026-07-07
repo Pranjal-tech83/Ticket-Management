@@ -22,7 +22,6 @@ Ticket-Management/
 │   ├── data.js                # Mock database layer (Tickets, KB Articles, Categories, Users, etc.)
 │   ├── tickets.js             # Incidents Workspace (Table management, Filters, Details Drawer, Creation Modal)
 │   ├── assistant.js           # AI Assistant chat module with interactive diagnostic capabilities
-│   ├── knowledge.js           # Knowledge Base manager (Search, Article generation, AI summarization)
 │   ├── workflow.js            # Resolution pipeline visualizer (Triage, Analysis, Verification, Resolving)
 │   ├── analytics.js           # Telemetry metrics aggregator (SLA trackers, CSS-based live graphs)
 │   ├── email.js               # Integrated inbox simulator (Templated email replies, outbound triage)
@@ -53,25 +52,20 @@ Ticket-Management/
 *   **Diagnostic Templates**: Quick-select templates matching live tickets for automated query diagnostics.
 *   **Contextual Responses**: Simulates natural responses based on selected active tickets.
 
-### 4. 📚 Knowledge Base
-*   **Searchable Directory**: Retrieve reference material for authentication protocols, payment configuration, webhook configurations, and database replicas.
-*   **AI Enhancement Tool**: Click "AI Summarize" on articles to compile them into actionable troubleshooting guides.
-*   **Article Composer**: Write and publish new articles immediately.
-
-### 5. ⚙️ Agent workflow Simulator (Workflow View)
+### 4. ⚙️ Agent workflow Simulator (Workflow View)
 *   **Live Pipeline Pipeline Tracking**: Visualizes resolution flows divided into four sequential stages: **Triage**, **Analysis**, **Verification**, and **Resolution**.
 *   **Real-Time Simulation**: Interactive triggers to advance tickets step-by-step through the automated resolution sequence.
 
-### 6. 📈 Detailed Metrics (Analytics View)
+### 5. 📈 Detailed Metrics (Analytics View)
 *   **Resolution Breakdown**: Displays priority distributions (Urgent, High, Medium, Low) and department metrics (Customer Support, Engineering, Billing).
 *   **Time-to-Resolve Telemetry**: Summarizes Average First Response Time (SLA) and Average Close Time metrics.
 
-### 7. 📬 Outbox Orchestrator (Email Automation View)
+### 6. 📬 Outbox Orchestrator (Email Automation View)
 *   **Email Queue Manager**: Lists automated notification emails generated when tickets update.
 *   **Template Composer**: Pick from canned notification templates (Ticket Received, Investigation, Resolution Confirmed).
 *   **Send Reply Simulator**: Compose and dispatch customer emails directly from the dashboard.
 
-### 8. 🛠️ Control Panel (Settings View)
+### 7. 🛠️ Control Panel (Settings View)
 *   **Profile Customizer**: Edit name, avatar background color, and avatar image. Updates sidebar and navbar profiles in real-time.
 *   **Appearance**: Switch between Light Mode and Dark Mode.
 *   **System Rules**: Modify confidence thresholds, SLA alert levels, and auto-escalation criteria.
