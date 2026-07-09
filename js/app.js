@@ -307,4 +307,3 @@ function initIntegrationsModule() {
 // Expose toast factory globally
 window.showToast = showToast;
 window.refreshDynamicViewElements = refreshDynamicViewElements;
-
