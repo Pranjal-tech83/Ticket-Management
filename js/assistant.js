@@ -11,6 +11,7 @@ function initAssistantModule() {
   if (chatMessages && chatMessages.children.length <= 1) {
     chatMessages.innerHTML = "";
     appendMessage("Hello! I'm your SupportPilot IT Assistant. Ask me about VPN issues, network connectivity, printer troubleshooting, or password management.", "ai");
+  }
 
   sendBtn.addEventListener("click", handleSendMessage);
   chatInput.addEventListener("keypress", (e) => {
