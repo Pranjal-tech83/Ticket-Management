@@ -1,354 +1,168 @@
-// data.js - Mock Data Layer for SupportPilot Platform
+// assistant.js - Smart IT Assistant Chatbox Controller (Actionable Guide Version)
 
-const initialTickets = [
-  {
-    id: "TKT-1024",
-    user: { name: "David Miller", email: "david.miller@acme.com", company: "Acme Corp" },
-    department: "Engineering",
-    subject: "API Authentication failing with 401 Unauthorized in Production",
-    category: "Authentication",
-    priority: "Urgent",
-    severity: "Critical",
-    status: "Open",
-    assignedAgent: "Sarah Connor",
-    createdDate: "2026-07-03T10:15:00Z",
-    confidenceScore: 97,
-    description: "Our production services are failing to authenticate with the primary API gateway. We are receiving standard 401 Unauthorized codes despite rotating credentials and passing valid tokens. This is blocking all new client requests.",
-    aiClassification: {
-      category: "API & Authentication",
-      priority: "Urgent",
-      severity: "Critical",
-      confidence: 97,
-      suggestedDept: "Engineering Infrastructure"
-    },
-    suggestedResolution: "Validate token signing certificates and clock skew. It appears the token validation server has a time drift of ~120s compared to the auth gateway, causing all validation calls to fail. Synchronize clocks via NTP.",
-    escalationHistory: [
-      { date: "2026-07-03T10:16:00Z", from: "System Reception", to: "Triage Agent", message: "Auto-escalated to Engineering based on 'Critical' severity classification." }
-    ],
-    timeline: [
-      { time: "2026-07-03T10:15:00Z", title: "Ticket Created", user: "David Miller", type: "system" },
-      { time: "2026-07-03T10:16:00Z", title: "AI Analysis Completed", user: "Diagnosis Agent", type: "ai" },
-      { time: "2026-07-03T10:20:00Z", title: "Knowledge Retrieval", user: "Knowledge Agent", type: "ai" }
-    ],
-    attachments: ["server_logs_401.txt", "oauth_payload.json"]
-  },
-  {
-    id: "TKT-1025",
-    user: { name: "Emily Watson", email: "emily@pixeltech.io", company: "PixelTech" },
-    department: "Billing",
-    subject: "Double-charged for monthly enterprise subscription",
-    category: "Payment Issues",
-    priority: "High",
-    severity: "Major",
-    status: "Pending",
-    assignedAgent: "Alex Mercer",
-    createdDate: "2026-07-02T14:22:00Z",
-    confidenceScore: 91,
-    description: "We noticed two identical invoices and charges on our corporate credit card for the month of June. We only upgraded to the Enterprise tier once. Please reverse the duplicate charge.",
-    aiClassification: {
-      category: "Billing & Invoices",
-      priority: "High",
-      severity: "Major",
-      confidence: 91,
-      suggestedDept: "Billing & Finance"
-    },
-    suggestedResolution: "Locate customer invoice history in Stripe billing dashboard. Identify if duplicate tokens were generated during checkout callback. Refund the second charge invoice number INV-8874 and update customer subscription status.",
-    escalationHistory: [],
-    timeline: [
-      { time: "2026-07-02T14:22:00Z", title: "Ticket Created", user: "Emily Watson", type: "system" },
-      { time: "2026-07-02T14:25:00Z", title: "AI Diagnostics Run", user: "Diagnosis Agent", type: "ai" }
-    ],
-    attachments: ["invoice_INV-8873.pdf", "cc_statement_june.png"]
-  },
-  {
-    id: "TKT-1026",
-    user: { name: "Marcus Chen", email: "marcus.c@nexusrift.com", company: "NexusRift" },
-    department: "Customer Support",
-    subject: "Cannot invite new users to workspace - limit reached alert",
-    category: "Workspace Settings",
-    priority: "Medium",
-    severity: "Minor",
-    status: "Open",
-    assignedAgent: "Emma Stone",
-    createdDate: "2026-07-03T08:45:00Z",
-    confidenceScore: 88,
-    description: "I am attempting to add 3 new team members to our workspace, but the system keeps raising an error saying 'Seat limit reached', even though our billing dashboard shows we have 5 empty seats available in our plan.",
-    aiClassification: {
-      category: "Workspace Settings",
-      priority: "Medium",
-      severity: "Minor",
-      confidence: 88,
-      suggestedDept: "Customer Support Tier 2"
-    },
-    suggestedResolution: "Refresh the cache of user seats inside the organization config. Clear database query lock which blocks seat allocations from updating immediately in secondary read replicas.",
-    escalationHistory: [],
-    timeline: [
-      { time: "2026-07-03T08:45:00Z", title: "Ticket Created", user: "Marcus Chen", type: "system" }
-    ],
-    attachments: ["seat_alert_screenshot.jpg"]
-  },
-  {
-    id: "TKT-1027",
-    user: { name: "Jessica Taylor", email: "jtaylor@cloudscale.net", company: "CloudScale" },
-    department: "Engineering",
-    subject: "Webhook delivery failure to target servers",
-    category: "Webhooks",
-    priority: "High",
-    severity: "Major",
-    status: "Resolved",
-    assignedAgent: "Sarah Connor",
-    createdDate: "2026-07-01T09:00:00Z",
-    confidenceScore: 94,
-    description: "Webhooks are constantly timing out when sending updates to our target listener endpoint. We have checked our firewall rules, and they are correct. Is there a throttling policy on your outbound servers?",
-    aiClassification: {
-      category: "Webhooks & API Integrations",
-      priority: "High",
-      severity: "Major",
-      confidence: 94,
-      suggestedDept: "Engineering Infrastructure"
-    },
-    suggestedResolution: "Check outbound NAT IP block list. It is possible our webhook server's outgoing IP address was flagged for spam/ddos by AWS Shield or custom user proxies. Whitelist the outbound range provided in documentation.",
-    escalationHistory: [
-      { date: "2026-07-01T11:00:00Z", from: "Sarah Connor", to: "Resolved State", message: "Resolved by updating firewall rules and whitelisting IP endpoints." }
-    ],
-    timeline: [
-      { time: "2026-07-01T09:00:00Z", title: "Ticket Created", user: "Jessica Taylor", type: "system" },
-      { time: "2026-07-01T11:00:00Z", title: "Marked Resolved", user: "Sarah Connor", type: "agent" }
-    ],
-    attachments: []
-  },
-  {
-    id: "TKT-1028",
-    user: { name: "Robert Downey", email: "robert@starkindustries.com", company: "Stark Industries" },
-    department: "Engineering",
-    subject: "Database latency spiked to 800ms during query operations",
-    category: "Database Performance",
-    priority: "Urgent",
-    severity: "Critical",
-    status: "Open",
-    assignedAgent: "Unassigned",
-    createdDate: "2026-07-03T11:30:00Z",
-    confidenceScore: 98,
-    description: "We are observing massive spikes in write latency on our postgres-db cluster. Queries that normally take 5ms are lagging over 800ms. CPU usage is pinned at 98%. Need immediate help to check locks.",
-    aiClassification: {
-      category: "Database & Performance",
-      priority: "Urgent",
-      severity: "Critical",
-      confidence: 98,
-      suggestedDept: "Engineering DB Operations"
-    },
-    suggestedResolution: "Analyze active pg_stat_activity queries. Find and kill long-running table locks or non-indexed searches on the metrics schema. Execute VACUUM ANALYZE to refresh index plans.",
-    escalationHistory: [],
-    timeline: [
-      { time: "2026-07-03T11:30:00Z", title: "Ticket Created", user: "Robert Downey", type: "system" }
-    ],
-    attachments: ["cpu_spike_report.log"]
-  },
-  {
-    id: "TKT-1029",
-    user: { name: "Sophia Loren", email: "sophia@cinematech.it", company: "CinemaTech" },
-    department: "Customer Support",
-    subject: "Password reset link sends users to invalid expired page",
-    category: "User Experience",
-    priority: "Low",
-    severity: "Minor",
-    status: "Resolved",
-    assignedAgent: "Emma Stone",
-    createdDate: "2026-06-30T16:00:00Z",
-    confidenceScore: 85,
-    description: "Some of our users are reporting that the password reset link generated by the system directs them to a 404 expired screen immediately after clicking it, even if they click it within 1 minute of request.",
-    aiClassification: {
-      category: "Auth Flows",
-      priority: "Low",
-      severity: "Minor",
-      confidence: 85,
-      suggestedDept: "Frontend UX Team"
-    },
-    suggestedResolution: "Check configuration setting for password expiry window token lifespan. There is an environment variable configuration that was incorrectly set to 60 seconds rather than 60 minutes.",
-    escalationHistory: [],
-    timeline: [
-      { time: "2026-06-30T16:00:00Z", title: "Ticket Created", user: "Sophia Loren", type: "system" },
-      { time: "2026-06-30T16:30:00Z", title: "Resolved State", user: "Emma Stone", type: "agent" }
-    ],
-    attachments: []
-  },
-  {
-    id: "TKT-1030",
-    user: { name: "Ryan Gosling", email: "driver@la-la-land.io", company: "Driver Services" },
-    department: "Billing",
-    subject: "Declined transactions for international currency card payments",
-    category: "Payment Issues",
-    priority: "Medium",
-    severity: "Major",
-    status: "Pending",
-    assignedAgent: "Unassigned",
-    createdDate: "2026-07-03T02:10:00Z",
-    confidenceScore: 89,
-    description: "We are receiving credit card decline notices for customers purchasing subscriptions using non-US cards. The invoices fail at the stripe validation level. Address verification system is declining valid cards.",
-    aiClassification: {
-      category: "Billing & Currency Gateway",
-      priority: "Medium",
-      severity: "Major",
-      confidence: 89,
-      suggestedDept: "Billing"
-    },
-    suggestedResolution: "Adjust Stripe Radar risk rules for international billing card postal codes. Allow bypass of billing zip validation for countries where zip codes are not standardized.",
-    escalationHistory: [],
-    timeline: [
-      { time: "2026-07-03T02:10:00Z", title: "Ticket Created", user: "Ryan Gosling", type: "system" }
-    ],
-    attachments: []
+function initAssistantModule() {
+  const sendBtn = document.getElementById("btn-send-message");
+  const chatInput = document.getElementById("chat-input");
+  const chatMessages = document.getElementById("chat-messages");
+
+  if (!sendBtn || !chatInput) return;
+
+  // Initialize welcome layout when the chat screen is clear
+  if (chatMessages && chatMessages.children.length <= 1) {
+    chatMessages.innerHTML = "";
+    appendMessage("Hello! I'm your SupportPilot IT Assistant. Ask me about VPN issues, network connectivity, printer troubleshooting, or password management.", "ai");
+
+  sendBtn.addEventListener("click", handleSendMessage);
+  chatInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") handleSendMessage();
+  });
+}
+
+function handleSendMessage() {
+  const chatInput = document.getElementById("chat-input");
+  const message = chatInput.value.trim();
+  const sendBtn = document.getElementById("btn-send-message");
+  if (!message) return;
+
+  appendMessage(message, "user");
+  chatInput.value = "";
+  chatInput.disabled = true;
+  sendBtn.disabled = true;
+
+  // Dynamic user engagement simulation delay
+  setTimeout(() => {
+    generateAIResponse(message);
+    chatInput.disabled = false;
+    sendBtn.disabled = false;
+    chatInput.focus();
+  }, 1000); 
+}
+
+function appendMessage(text, sender, isHTML = false) {
+  const chatMessages = document.getElementById("chat-messages");
+  if (!chatMessages) return;
+
+  const msgDiv = document.createElement("div");
+  msgDiv.className = `chat-message ${sender}`;
+  
+  if (sender === "user") {
+    msgDiv.style.cssText = "align-self: flex-end; background-color: var(--accent-primary); color: white; padding: 12px 16px; border-radius: 8px; max-width: 80%; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);";
+  } else {
+    msgDiv.style.cssText = "align-self: flex-start; background-color: var(--bg-sidebar); padding: 12px 16px; border-radius: 8px; max-width: 80%; border: 1px solid var(--border-color); margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);";
   }
-];
 
-const mockEmails = [
-  {
-    id: "EML-101",
-    recipient: "support@supportpilot.ai",
-    sender: "david.miller@acme.com",
-    subject: "RE: [TKT-1024] API Authentication failing in Production",
-    preview: "Thanks for the response. Synchronizing our local time settings indeed solved the issue.",
-    status: "Delivered",
-    history: [
-      { date: "2026-07-03T10:15:00Z", status: "Received", details: "Incoming ticket trigger email received" },
-      { date: "2026-07-03T10:16:30Z", status: "Sent", details: "AI automated acknowledgement email dispatched" },
-      { date: "2026-07-03T10:45:00Z", status: "Delivered", details: "Resolution update email sent to customer" }
-    ]
-  },
-  {
-    id: "EML-102",
-    recipient: "billing@supportpilot.ai",
-    sender: "emily@pixeltech.io",
-    subject: "RE: [TKT-1025] Double-charged for monthly enterprise subscription",
-    preview: "Please let me know once the charge back transaction has been processed.",
-    status: "Pending",
-    history: [
-      { date: "2026-07-02T14:22:00Z", status: "Received", details: "Incoming billing issue request received" },
-      { date: "2026-07-02T14:23:00Z", status: "Sent", details: "Automated ticket verification email sent" }
-    ]
-  },
-  {
-    id: "EML-103",
-    recipient: "api@supportpilot.ai",
-    sender: "jtaylor@cloudscale.net",
-    subject: "RE: [TKT-1027] Webhook delivery failure to target servers",
-    preview: "Perfect! We have whitelisted the IP ranges. Thanks for resolving so quickly.",
-    status: "Delivered",
-    history: [
-      { date: "2026-07-01T09:00:00Z", status: "Received", details: "Incoming system integration report" },
-      { date: "2026-07-01T11:00:00Z", status: "Delivered", details: "Resolution success summary sent to customer" }
-    ]
-  },
-  {
-    id: "EML-104",
-    recipient: "support@supportpilot.ai",
-    sender: "brian.o@fastdrive.org",
-    subject: "Urgent check required: Custom SSO Integration failing validation step",
-    preview: "We uploaded our metadata XML but the assertion signature cannot be matched.",
-    status: "Failed",
-    history: [
-      { date: "2026-07-03T11:00:00Z", status: "Received", details: "SSO certificate upload validation error" },
-      { date: "2026-07-03T11:00:05Z", status: "Failed", details: "Outbound automatic auto-reply blocked by target spam filter" }
-    ]
+  if (isHTML) {
+    msgDiv.innerHTML = text;
+  } else {
+    const p = document.createElement("p");
+    p.style.margin = "0";
+    p.style.fontSize = "14px";
+    p.style.lineHeight = "1.5";
+    p.textContent = text;
+    msgDiv.appendChild(p);
   }
-];
 
-// Available categories for new tickets
-const categories = [
-  "Authentication",
-  "Payment Issues",
-  "Workspace Settings",
-  "Webhooks",
-  "Database Performance",
-  "User Experience",
-  "API & Integrations"
-];
+  chatMessages.appendChild(msgDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 
-// Available departments
-const departments = [
-  "Engineering",
-  "Billing",
-  "Customer Support",
-  "Product Operations"
-];
+function generateAIResponse(userMessage) {
+  if (!userMessage) return;
+  const lowerMsg = userMessage.toLowerCase();
+  
+  try {
+    // SCENARIO 1: SPECIFIC VPN RESTART TARGET (HIGHEST PRIORITY)
+    if (lowerMsg.includes("restart") && lowerMsg.includes("vpn")) {
+      appendMessage(`
+        <p style="margin: 0 0 10px 0; font-size: 14px;"><strong>VPN Client Recycling Steps:</strong> If your secure connection tunnel is frozen or looping, perform this clean application restart:</p>
+        <ol style="margin: 0 0 12px 0; padding-left: 20px; font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
+          <li>Locate your VPN client icon in the Windows taskbar system tray (bottom-right corner), right-click it, and choose <strong>Disconnect / Exit</strong>.</li>
+          <li>Press <code>Ctrl + Shift + Esc</code> to launch Task Manager. Verify no residual background processes (e.g., OpenVPN Daemon, Cisco AnyConnect backend) are running; if found, click <strong>End Task</strong>.</li>
+          <li>Relaunch your client interface from the desktop, choose your regional gateway domain node, and run a fresh authentication handshake.</li>
+        </ol>
+        <p style="margin: 0; font-size: 13px; color: var(--text-secondary);">This clears any stale cryptographic credential tokens or broken loopback interfaces running on your local machine.</p>
+      `, "ai", true);
+      return;
+    }
 
-// Multi-Agent Workflow Node details and mock messages for simulations
-const agentSteps = [
-  {
-    id: "diagnose",
-    name: "Diagnosis Agent",
-    description: "Analyzes language, constructs, and classifies issue metadata.",
-    executionTime: "450ms",
-    logs: [
-      "Parsing ticket subject and description body...",
-      "Extracting keywords: '401', 'unauthorized', 'credentials'...",
-      "Matching category pattern -> API & Authentication (Confidence: 97%)",
-      "Analyzing sentiment -> Urgent & Critical blockages."
-    ]
-  },
-  {
-    id: "knowledge",
-    name: "Knowledge Agent",
-    description: "Scans documentation indexing and internal vector solutions.",
-    executionTime: "820ms",
-    logs: [
-      "Searching index vectors for: 'auth gateway 401 Unauthorized'...",
-      "Retrieved documentation matching ID: KB-0045 (OAuth Signature Validation Issues)",
-      "Retrieved resolution history ID: SOL-824 (Time Synchronizations on Auth Node)",
-      "Extracted context snippets passed to reasoning layer."
-    ]
-  },
-  {
-    id: "reasoning",
-    name: "Reasoning Agent",
-    description: "Applies chain-of-thought logic to formulate resolution steps.",
-    executionTime: "1240ms",
-    logs: [
-      "Evaluating symptoms: 401 response code + valid rotating credentials.",
-      "Analyzing temporal variables: Server timestamps in log file show a drift.",
-      "Hypothesis: Authentication token expired because validation server clock is ahead.",
-      "Developing corrective steps: Verify system time synchronization using NTP service."
-    ]
-  },
-  {
-    id: "solution",
-    name: "Solution Agent",
-    description: "Packages the findings into actionable human explanations.",
-    executionTime: "680ms",
-    logs: [
-      "Formatting steps in standard Markdown...",
-      "Drafting suggestions for engineering team deployment...",
-      "Adding copyable instructions for server synchronizations via `ntpdate` command."
-    ]
-  },
-  {
-    id: "validation",
-    name: "Validation Agent",
-    description: "Cross-checks proposal against compliance and system constraints.",
-    executionTime: "390ms",
-    logs: [
-      "Checking suggestions for code vulnerabilities: Clean.",
-      "Verifying tone and formatting standards: Clean.",
-      "Confirming API routes match v2 specification: Confirmed."
-    ]
-  },
-  {
-    id: "escalation",
-    name: "Escalation Agent",
-    description: "Determines if manual human agent intervention is required.",
-    executionTime: "150ms",
-    logs: [
-      "Evaluating confidence threshold: 97% is above resolution direct boundary (90%).",
-      "Decision: Propose resolution to customer, allocate to 'Sarah Connor' on Engineering for monitoring."
-    ]
+    // SCENARIO 2: HARDWARE PRINTER ROUTING (EVALUATED BEFORE GENERIC NETWORK KEYWORDS)
+    // Fixes the bug where "how do I connect my printer" triggers generic Wi-Fi responses because of the word "connect"
+    if (lowerMsg.includes("printer")) {
+      appendMessage(`
+        <p style="margin: 0 0 10px 0; font-size: 14px;"><strong>Local Printer Mapping Checklist:</strong> If print requests are failing or the asset displays as offline, follow these steps:</p>
+        <ul style="margin: 0 0 12px 0; padding-left: 20px; font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
+          <li><strong>Restart Spooler Sockets:</strong> Press <code>Windows Key + R</code>, input <code>services.msc</code>, and hit Enter. Locate <strong>Print Spooler</strong> in the list, right-click it, and select <strong>Restart</strong>.</li>
+          <li><strong>Verify Subnet Access:</strong> Ensure your local workstation is authenticated on the secure enterprise network line, not a segmented guest Wi-Fi access point.</li>
+          <li><strong>Check Network Sharing Path:</strong> Validate that your system is targeting the exact network distribution folder path: <code>\\\\corp-print-04\\Floor2_Color</code>.</li>
+        </ul>
+        <button onclick="document.getElementById('chat-input').value = 'Give me the manual network flush steps'; document.getElementById('btn-send-message').click();" style="background: var(--accent-primary); color: white; border: none; padding: 6px 12px; font-size: 12px; border-radius: 4px; cursor: pointer; font-weight: 600;">Flush Network Connection Tables</button>
+      `, "ai", true);
+      return;
+    }
+
+    // SCENARIO 3: ACTIONABLE MANUAL NETWORK REMEDIATION (TRIGGERED BY BUTTONS / COMMANDS)
+    if (lowerMsg.includes("patch") || lowerMsg.includes("flush") || lowerMsg.includes("fix") || lowerMsg.includes("optimize")) {
+      appendMessage(`
+        <p style="margin: 0 0 10px 0; font-size: 14px;"><strong>Manual Command Prompt Repair Guide:</strong> You can completely flush your network interface cards using these real commands:</p>
+        <div style="padding: 12px; background: rgba(59, 130, 246, 0.05); border-left: 4px solid var(--accent-primary); border-radius: 4px; font-size: 13px; line-height: 1.6; margin-bottom: 12px;">
+          <strong>Step 1:</strong> Press the Windows key, type <code>cmd</code>, right-click on <strong>Command Prompt</strong>, and select <em>Run as Administrator</em>.<br>
+          <strong>Step 2:</strong> Purge stale domain tables by running this command:<br>
+          <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-weight: 600; display: inline-block; margin-top: 4px;">ipconfig /flushdns</code><br>
+          <strong>Step 3:</strong> Reset corrupted network socket bindings by running:<br>
+          <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-weight: 600; display: inline-block; margin-top: 4px;">netsh int ip reset</code>
+        </div>
+        <p style="margin: 0; font-size: 13px; color: var(--text-secondary);">Once both commands confirm a success status, restart your browser application and attempt to access your enterprise panel again.</p>
+      `, "ai", true);
+      return;
+    }
+
+    // SCENARIO 4: GENERAL GATEWAY / NETWORK DIAGNOSIS (BROAD INQUIRIES)
+    if (lowerMsg.includes("vpn") || lowerMsg.includes("network") || lowerMsg.includes("internet") || lowerMsg.includes("connect")) {
+      appendMessage(`
+        <p style="margin: 0 0 10px 0; font-size: 14px;"><strong>Network Connectivity Diagnosis:</strong> Let's figure out where the connection is dropping.</p>
+        <p style="margin: 0 0 12px 0; font-size: 13px; line-height: 1.5; color: var(--text-secondary);">Open a separate tab in your browser and test if standard external websites (like Google.com) load. If public links open fine, your local hardware Wi-Fi connection is fully functional. The problem lies with a handshake timeout loop on the secure enterprise VPN server gateway.</p>
+        <p style="margin: 0 0 12px 0; font-size: 13px; font-weight: 600;">What actionable route would you like to take?</p>
+        <div style="display: flex; gap: 8px;">
+          <button onclick="document.getElementById('chat-input').value = 'Give me the manual network flush steps'; document.getElementById('btn-send-message').click();" style="background: var(--accent-primary); color: white; border: none; padding: 6px 12px; font-size: 12px; border-radius: 4px; cursor: pointer; font-weight:600;">Show Me the Commands</button>
+          <button onclick="document.getElementById('chat-input').value = 'I want to submit a critical ticket to technical staff'; document.getElementById('btn-send-message').click();" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-main); padding: 6px 12px; font-size: 12px; border-radius: 4px; cursor: pointer;">Submit Support Ticket</button>
+        </div>
+      `, "ai", true);
+      return;
+    }
+
+    // SCENARIO 5: PASSWORD / DOMAIN SECURITY LOCKOUT ROUTINES
+    if (lowerMsg.includes("password") || lowerMsg.includes("lock") || lowerMsg.includes("account") || lowerMsg.includes("login")) {
+      appendMessage(`
+        <p style="margin: 0 0 10px 0; font-size: 14px;"><strong>Active Directory Login Overrides:</strong> If your corporate identity profile is locked out due to rapid credential sync failures after a password rotation, run this offline log-in workaround:</p>
+        <ol style="margin: 0 0 12px 0; padding-left: 20px; font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
+          <li><strong>Sever Networks:</strong> Toggle airplane mode or shut off your laptop's Wi-Fi adapter entirely. This keeps the workstation from polling the centralized lockout directory servers.</li>
+          <li><strong>Enter Cached Credentials:</strong> Type your exact prior password. The hardware operating system will read local cached configuration states and let you access your workspace offline.</li>
+          <li><strong>Sync Token Groups:</strong> Reconnect your network links once your desktop interface finishes loading, and visit the single sign-on hub to re-sync your active access tokens.</li>
+        </ol>
+        <p style="margin: 0; font-size: 13px; color: var(--text-secondary);">If your credentials are completely expired or corrupted, please use the navigation links to open a formal account recovery ticket.</p>
+      `, "ai", true);
+      return;
+    }
+
+    // SCENARIO 6: HUMAN HELPDESK ESCALATION PIPELINE
+    if (lowerMsg.includes("ticket") || lowerMsg.includes("escalate") || lowerMsg.includes("staff") || lowerMsg.includes("human")) {
+      appendMessage(`
+        <p style="margin: 0 0 8px 0; font-size: 14px;"><strong>Live Helpdesk Pipeline Entry:</strong></p>
+        <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Your workspace incident log has been compiled and forwarded directly to the live technical systems queue. An IT operations analyst will cross-reference your internal IP profile map and contact you on your team communication handle shortly.</p>
+      `, "ai", true);
+      return;
+    }
+
+    // SCENARIO 7: GENERIC CATCH-ALL FALLBACK
+    appendMessage("I want to give you precise, actionable solutions. Could you clarify if you are troubleshooting a corporate VPN gateway timeout loop, an office network printer spooler connection, or a locked Active Directory domain login profile?", "ai");
+
+  } catch (error) {
+    console.error("Diagnostic routing evaluation failed:", error);
+    appendMessage("An isolation error occurred while generating the instructions sequence. Please check terminal logs.", "ai");
   }
-];
+}
 
-// Expose models to window context
-window.SupportPilotData = {
-  initialTickets,
-  mockEmails,
-  categories,
-  departments,
-  agentSteps
+// Module registration hook
+window.SupportPilotAssistant = {
+  init: initAssistantModule
 };
