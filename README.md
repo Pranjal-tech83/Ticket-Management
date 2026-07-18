@@ -88,19 +88,12 @@
 
 ## 🆕 Recent Updates
 
-
-
-<p>🟣 <strong>Mobile Sidebar</strong> — Hamburger ☰ button opens the sidebar on phones; a ✕ close button and dark overlay dismiss it</p>
-
-<p>🟠 <strong>Multicolor Bar Chart</strong> — Each bar in the SLA chart has its own distinct color (Red, Orange, Yellow, Green, Cyan, Blue, Purple)</p>
-
-<p>🔵 <strong>Show Data Toggle</strong> — Both Bar Chart and Pie Chart now have a "Show Data" / "Back" button to flip between visual and table views</p>
-
-<p>🟢 <strong>Larger Charts</strong> — Bar chart height increased to 200px, Pie chart enlarged to 130px</p>
-
-<p>🔴 <strong>Ticket Data Cleared</strong> — Initial mock tickets (TKT-1001, TKT-1002, TKT-1003) removed so the workspace starts fresh</p>
-
-<p>📖 <strong>README Overhaul</strong> — Full documentation rewrite with wave banners, Mermaid diagrams, colored bullet points, file tree, and changelog</p>
+<p>🎨 <strong>Login Redesign</strong> — Split-pane layout with elegant typography and smooth entrance animations using Framer Motion styles.</p>
+<p>⚙️ <strong>Settings Revamp</strong> — Clean white-card dashboard layout with Profile and Password tab views, plus an updated default mock user ("pranjal kumar").</p>
+<p>💨 <strong>Dashboard Animations</strong> — Staggered fade-up entrances, dynamic growing bar charts, and smooth hover effects on all cards for a premium feel.</p>
+<p>🟣 <strong>Mobile Sidebar</strong> — Hamburger ☰ button opens the sidebar on phones; a ✕ close button and dark overlay dismiss it.</p>
+<p>🔵 <strong>Show Data Toggle</strong> — Both Bar Chart and Pie Chart now have a "Show Data" / "Back" button to flip between visual and table views.</p>
+<p>🔴 <strong>Mock Data Refined</strong> — Default mock tickets updated and standardized for demonstrating AI resolution and detail drawer capabilities.</p>
 
 
 
